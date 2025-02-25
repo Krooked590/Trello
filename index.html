@@ -37,6 +37,12 @@
                 // opts.cards contains all card objects in the list
                 var sortedCards = opts.cards.sort(
                   function (a, b) {
+                    if (a.labels.some(label => label.name === "Pinned") && !b.labels.some(label => label.name === "Pinned")) {
+                      return -1;
+                    } else if (b.labels.some(label => label.name === "Pinned") && !a.labels.some(label => label.name === "Pinned")) {
+                      return 1;
+                    }
+
                     if (a.labels.some(label => label.name === "Needs More Info" || label.name === "Needs Approval") && !b.labels.some(label => label.name === "Needs More Info" || label.name === "Needs Approval")) {
                       return -1;
                     } else if (b.labels.some(label => label.name === "Needs More Info" || label.name === "Needs Approval") && !a.labels.some(label => label.name === "Needs More Info" || label.name === "Needs Approval")) {
