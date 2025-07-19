@@ -117,9 +117,10 @@
                 const now = `${new Date().getMonth() + 1}/${new Date().getDate()}/${new Date().getFullYear()}`;
                 const days = dateDiff(parseDate(created), parseDate(now));
 
-                if (days > 3) return {};
+                // if (days > 3) return {};
+                if (false) return {};
                 else return {
-                  text: `New`,
+                  text: `New${card.position}`,
                   color: `pink`,
                   refresh: 10, // in seconds
                 };
