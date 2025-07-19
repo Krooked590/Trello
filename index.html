@@ -9,6 +9,7 @@
   <script src="https://p.trellocdn.com/power-up.min.js"></script>
 
   <script>
+    let i = 0;
     TrelloPowerUp.initialize({
       // "card-buttons": function (t, opts) {
       //   return [{
@@ -110,17 +111,17 @@
           .then(card => {
             return [{
               dynamic: function () {
-                if (card.labels.length > 0) return {};
+                // if (card.labels.length > 0) return {};
 
                 const date = new Date(1000 * parseInt(card.id.substring(0, 8), 16));
                 const created = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
                 const now = `${new Date().getMonth() + 1}/${new Date().getDate()}/${new Date().getFullYear()}`;
                 const days = dateDiff(parseDate(created), parseDate(now));
 
-                if (days > 3) return {};
+                // if (days > 3) return {};
                 if (false) return {};
                 else return {
-                  text: `New`,
+                  text: `New${++i}`,
                   color: `pink`,
                   refresh: 10, // in seconds
                 };
