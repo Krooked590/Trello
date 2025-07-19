@@ -105,7 +105,6 @@
           });
       },
       "card-badges": function (t, options) {
-        let i = 0;
         return t
           .card("all")
           .then(card => {
@@ -118,10 +117,10 @@
                 const now = `${new Date().getMonth() + 1}/${new Date().getDate()}/${new Date().getFullYear()}`;
                 const days = dateDiff(parseDate(created), parseDate(now));
 
-                // if (days > 3) return {};
+                if (days > 3) return {};
                 if (false) return {};
                 else return {
-                  text: `New${++i}`,
+                  text: `New`,
                   color: `pink`,
                   refresh: 10, // in seconds
                 };
