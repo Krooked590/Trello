@@ -109,25 +109,31 @@
         return t
           .card("all")
           .then(card => {
-            return [{
-              dynamic: function () {
-                // if (card.labels.length > 0) return {};
+            return [
+              // {
+              //   dynamic: function () {
+              //     if (card.labels.length > 0) return {};
 
-                const date = new Date(1000 * parseInt(card.id.substring(0, 8), 16));
-                const created = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
-                const now = `${new Date().getMonth() + 1}/${new Date().getDate()}/${new Date().getFullYear()}`;
-                const days = dateDiff(parseDate(created), parseDate(now));
+              //     const date = new Date(1000 * parseInt(card.id.substring(0, 8), 16));
+              //     const created = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+              //     const now = `${new Date().getMonth() + 1}/${new Date().getDate()}/${new Date().getFullYear()}`;
+              //     const days = dateDiff(parseDate(created), parseDate(now));
 
-                // if (days > 3) return {};
-                if (false) return {};
-                else return {
-                  // text: `New`,
-                  text: `${(card.idList === "59d05a2fd8bca523a2e963b7" ? ++i : "")}`,
-                  color: `pink`,
-                  refresh: 10, // in seconds
-                };
-              },
-            }]
+              //     if (days > 3) return {};
+              //     else return {
+              //       text: `New`,
+              //       color: `pink`,
+              //       refresh: 10,
+              //     };
+              //   },
+              // },
+              {
+                // It's best to use static badges unless you need your
+                // badges to refresh.
+                // You can mix and match between static and dynamic
+                text: `${(card.idList === "59d05a2fd8bca523a2e963b7" ? ++i : "")}`,
+                color: 'pink',
+              },]
           })
       }
     });
