@@ -121,7 +121,8 @@
                 // if (days > 3) return {};
                 if (false) return {};
                 else return {
-                  text: `New ${card.idList}`,
+                  // text: `New`,
+                  text: `${(card.idList === "59d05a2fd8bca523a2e963b7" ? ++i : "")}`,
                   color: `pink`,
                   refresh: 10, // in seconds
                 };
