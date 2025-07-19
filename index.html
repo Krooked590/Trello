@@ -105,6 +105,7 @@
           });
       },
       "card-badges": function (t, options) {
+        let i = 0;
         return t
           .card("all")
           .then(card => {
@@ -120,7 +121,7 @@
                 // if (days > 3) return {};
                 if (false) return {};
                 else return {
-                  text: `New${card.idList}`,
+                  text: `New${++i}`,
                   color: `pink`,
                   refresh: 10, // in seconds
                 };
