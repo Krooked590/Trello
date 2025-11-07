@@ -19,6 +19,12 @@ var t = window.TrelloPowerUp.iframe();
     // Clear the loading option
     listFilter.innerHTML = '';
 
+    // Add "None" option
+    const noneOption = document.createElement('option');
+    noneOption.value = 'NONE';
+    noneOption.textContent = 'None (No badges on any list)';
+    listFilter.appendChild(noneOption);
+
     if (!lists || lists.length === 0) {
         const option = document.createElement('option');
         option.value = '';
