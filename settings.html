@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://p.trellocdn.com/power-up.min.css">
+    <style>
+        body {
+            padding: 15px;
+        }
+
+        .setting-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="number"],
+        input[type="text"] {
+            width: 100%;
+            padding: 5px;
+        }
+
+        input[type="color"] {
+            width: 100%;
+            height: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="setting-group">
+        <label for="intValue">Integer Value:</label>
+        <input type="number" id="intValue" value="4">
+    </div>
+
+    <div class="setting-group">
+        <label for="colorValue">Color:</label>
+        <input type="color" id="colorValue" value="#FFC0CB">
+    </div>
+
+    <div class="setting-group">
+        <label for="stringValue">String Value:</label>
+        <input type="text" id="stringValue" value="new">
+    </div>
+
+    <button id="save" class="mod-primary">Save</button>
+
+    <script src="https://p.trellocdn.com/power-up.min.js"></script>
+    <script src="./settings.js"></script>
+</body>
+
+</html>
