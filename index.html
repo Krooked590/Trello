@@ -33,7 +33,7 @@
         return t.popup({
           title: 'Badge Settings',
           url: './settings.html',
-          height: 300,
+          height: 360,
           args: {
             lists: lists  // Pass lists to the settings page
           }
@@ -125,14 +125,7 @@
         const badgeLabel = await t.get('member', 'private', 'badgeLabel', 'New');
         const listFilter = await t.get('member', 'private', 'listFilter', '');
 
-        console.log("card.idList", card.idList);
-        console.log("listFilter", listFilter);
-
-        if (listFilter && card.idList !== listFilter) {
-          console.log("listFilter", listFilter);
-          
-          return {};
-        }
+        if (listFilter.length > 0 && !listFilter.includes(card.idList)) return {};
 
         return [{
           dynamic: function () {
