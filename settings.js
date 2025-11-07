@@ -2,9 +2,9 @@ var t = window.TrelloPowerUp.iframe();
 
 // Load existing settings
 (async function () {
-    document.getElementById('days').value = await t.get('board', 'private', 'days', 4);
-    document.getElementById('badgeColor').value = await t.get('board', 'private', 'badgeColor', 'pink');
-    document.getElementById('badgeLabel').value = await t.get('board', 'private', 'badgeLabel', 'New');
+    document.getElementById('days').value = await t.get('member', 'private', 'days', 4);
+    document.getElementById('badgeColor').value = await t.get('member', 'private', 'badgeColor', 'pink');
+    document.getElementById('badgeLabel').value = await t.get('member', 'private', 'badgeLabel', 'New');
 })();
 
 // Save settings
@@ -13,9 +13,9 @@ document.getElementById('save').addEventListener('click', async function () {
     const badgeColor = document.getElementById('badgeColor').value;
     const badgeLabel = document.getElementById('badgeLabel').value;
 
-    await t.set('board', 'private', 'days', days);
-    await t.set('board', 'private', 'badgeColor', badgeColor);
-    await t.set('board', 'private', 'badgeLabel', badgeLabel);
+    await t.set('member', 'private', 'days', days);
+    await t.set('member', 'private', 'badgeColor', badgeColor);
+    await t.set('member', 'private', 'badgeLabel', badgeLabel);
 
     t.closePopup();
 });

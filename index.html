@@ -172,9 +172,9 @@
         const card = await t.card("all");
 
         // Load settings with defaults
-        const maxDays = parseInt(await t.get('board', 'private', 'days', 4));
-        const badgeColor = await t.get('board', 'private', 'badgeColor', 'pink');
-        const badgeLabel = await t.get('board', 'private', 'badgeLabel', 'New');
+        const maxDays = parseInt(await t.get('member', 'private', 'days', 4));
+        const badgeColor = await t.get('member', 'private', 'badgeColor', 'pink');
+        const badgeLabel = await t.get('member', 'private', 'badgeLabel', 'New');
 
         console.log("badgeColor:", badgeColor);
 
