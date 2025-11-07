@@ -24,6 +24,16 @@
             width: 100%;
             padding: 5px;
         }
+
+        select[multiple] {
+            height: 120px;
+        }
+
+        .hint {
+            font-size: 12px;
+            color: #666;
+            margin-top: 3px;
+        }
     </style>
 </head>
 
@@ -56,11 +66,12 @@
     </div>
 
     <div class="setting-group">
-        <label for="listFilter">Apply badges to list:</label>
-        <select id="listFilter">
+        <label for="listFilter">Apply badges to lists:</label>
+        <select id="listFilter" multiple>
             <option value="">Loading lists...</option>
         </select>
-        </div>
+        <div class="hint">Hold Ctrl (Cmd on Mac) to select multiple. Leave empty for all lists.</div>
+    </div>
 
     <button id="save" class="mod-primary">Save</button>
 
