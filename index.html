@@ -176,8 +176,6 @@
         const badgeColor = await t.get('member', 'private', 'badgeColor', 'pink');
         const badgeLabel = await t.get('member', 'private', 'badgeLabel', 'New');
 
-        console.log("badgeColor:", badgeColor);
-
         return [{
           dynamic: function () {
             if (card.labels.length > 0) return {};
