@@ -111,63 +111,6 @@
             }];
           });
       },
-      // "card-badges": function (t, options) {
-      //   return t
-      //     .card("all")
-      //     .then(card => {
-      //       return [{
-      //         dynamic: function () {
-      //           if (card.labels.length > 0) return {};
-
-      //           const date = new Date(1000 * parseInt(card.id.substring(0, 8), 16));
-      //           const created = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
-      //           const now = `${new Date().getMonth() + 1}/${new Date().getDate()}/${new Date().getFullYear()}`;
-      //           const days = dateDiff(parseDate(created), parseDate(now));
-
-      //           if (days > 3) return {};
-      //           else return {
-      //             text: `New`,
-      //             color: `pink`,
-      //             refresh: 10, // in seconds
-      //           };
-      //         },
-      //       }]
-      //     })
-      // }
-      // "card-badges": function (t, options) {
-      //   return t
-      //     .card("all")
-      //     .then(card => {
-      //       // Load settings with defaults
-      //       return Promise.all([
-      //         t.get('board', 'private', 'days', 4),
-      //         t.get('board', 'private', 'badgeColor', 'pink'),
-      //         t.get('board', 'private', 'badgeLabel', 'New')
-      //       ]).then(function (settings) {
-      //         const maxDays = parseInt(settings[0]);
-      //         const badgeColor = settings[1];
-      //         const badgeLabel = settings[2];
-
-      //         return [{
-      //           dynamic: function () {
-      //             if (card.labels.length > 0) return {};
-
-      //             const date = new Date(1000 * parseInt(card.id.substring(0, 8), 16));
-      //             const created = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
-      //             const now = `${new Date().getMonth() + 1}/${new Date().getDate()}/${new Date().getFullYear()}`;
-      //             const days = dateDiff(parseDate(created), parseDate(now));
-
-      //             if (days > maxDays) return {};
-      //             else return {
-      //               text: badgeLabel,
-      //               color: badgeColor,
-      //               refresh: 10, // in seconds
-      //             };
-      //           },
-      //         }];
-      //       });
-      //     })
-      // }
       "card-badges": async function (t, options) {
         const card = await t.card("all");
 
