@@ -118,6 +118,12 @@
         const maxDays = parseInt(await t.get('member', 'private', 'days', 4));
         const badgeColor = await t.get('member', 'private', 'badgeColor', 'pink');
         const badgeLabel = await t.get('member', 'private', 'badgeLabel', 'New');
+        const listFilter = await t.get('member', 'private', 'listFilter', '');
+
+        console.log("listFilter", listFilter);
+        if (listFilter && card.idList === listFilter) {
+          console.log("the list matches the filter, skipping badge");
+        }
 
         return [{
           dynamic: function () {
