@@ -31,7 +31,7 @@
         return t.popup({
           title: 'Settings',
           url: './settings.html',
-          height: 184 // Adjust based on your form size
+          height: 220 // Adjust based on your form size
         });
       },
       'list-sorters': function (t) {
@@ -134,39 +134,65 @@
       //       }]
       //     })
       // }
-      "card-badges": function (t, options) {
-        return t
-          .card("all")
-          .then(card => {
-            // Load settings with defaults
-            return Promise.all([
-              t.get('board', 'private', 'days', 4),
-              t.get('board', 'private', 'badgeColor', 'pink'),
-              t.get('board', 'private', 'badgeLabel', 'New')
-            ]).then(function (settings) {
-              const maxDays = parseInt(settings[0]);
-              const badgeColor = settings[1];
-              const badgeLabel = settings[2];
+      // "card-badges": function (t, options) {
+      //   return t
+      //     .card("all")
+      //     .then(card => {
+      //       // Load settings with defaults
+      //       return Promise.all([
+      //         t.get('board', 'private', 'days', 4),
+      //         t.get('board', 'private', 'badgeColor', 'pink'),
+      //         t.get('board', 'private', 'badgeLabel', 'New')
+      //       ]).then(function (settings) {
+      //         const maxDays = parseInt(settings[0]);
+      //         const badgeColor = settings[1];
+      //         const badgeLabel = settings[2];
 
-              return [{
-                dynamic: function () {
-                  if (card.labels.length > 0) return {};
+      //         return [{
+      //           dynamic: function () {
+      //             if (card.labels.length > 0) return {};
 
-                  const date = new Date(1000 * parseInt(card.id.substring(0, 8), 16));
-                  const created = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
-                  const now = `${new Date().getMonth() + 1}/${new Date().getDate()}/${new Date().getFullYear()}`;
-                  const days = dateDiff(parseDate(created), parseDate(now));
+      //             const date = new Date(1000 * parseInt(card.id.substring(0, 8), 16));
+      //             const created = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+      //             const now = `${new Date().getMonth() + 1}/${new Date().getDate()}/${new Date().getFullYear()}`;
+      //             const days = dateDiff(parseDate(created), parseDate(now));
 
-                  if (days > maxDays) return {};
-                  else return {
-                    text: badgeLabel,
-                    color: badgeColor,
-                    refresh: 10, // in seconds
-                  };
-                },
-              }];
-            });
-          })
+      //             if (days > maxDays) return {};
+      //             else return {
+      //               text: badgeLabel,
+      //               color: badgeColor,
+      //               refresh: 10, // in seconds
+      //             };
+      //           },
+      //         }];
+      //       });
+      //     })
+      // }
+      "card-badges": async function (t, options) {
+        const card = await t.card("all");
+
+        // Load settings with defaults
+        const maxDays = parseInt(await t.get('board', 'private', 'days', 4));
+        const badgeColor = await t.get('board', 'private', 'badgeColor', 'pink');
+        const badgeLabel = await t.get('board', 'private', 'badgeLabel', 'New');
+
+        return [{
+          dynamic: function () {
+            if (card.labels.length > 0) return {};
+
+            const date = new Date(1000 * parseInt(card.id.substring(0, 8), 16));
+            const created = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+            const now = `${new Date().getMonth() + 1}/${new Date().getDate()}/${new Date().getFullYear()}`;
+            const days = dateDiff(parseDate(created), parseDate(now));
+
+            if (days > maxDays) return {};
+            else return {
+              text: badgeLabel,
+              color: badgeColor,
+              refresh: 10, // in seconds
+            };
+          },
+        }];
       }
     });
 

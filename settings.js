@@ -1,32 +1,21 @@
 var t = window.TrelloPowerUp.iframe();
 
 // Load existing settings
-t.loadSecret('days').then(function (days) {
-    document.getElementById('days').value = days || 4;
-});
-
-t.loadSecret('badgeColor').then(function (badgeColor) {
-    document.getElementById('badgeColor').value = badgeColor || 'pink'; // pink
-});
-
-t.loadSecret('badgeLabel').then(function (badgeLabel) {
-    document.getElementById('badgeLabel').value = badgeLabel || 'new';
-});
+(async function () {
+    document.getElementById('days').value = await t.get('board', 'private', 'days', 4);
+    document.getElementById('badgeColor').value = await t.get('board', 'private', 'badgeColor', '#FFC0CB');
+    document.getElementById('badgeLabel').value = await t.get('board', 'private', 'badgeLabel', 'New');
+})();
 
 // Save settings
-document.getElementById('save').addEventListener('click', function () {
-    var days = document.getElementById('days').value;
-    var badgeColor = document.getElementById('badgeColor').value;
-    var badgeLabel = document.getElementById('badgeLabel').value;
+document.getElementById('save').addEventListener('click', async function () {
+    const days = document.getElementById('days').value;
+    const badgeColor = document.getElementById('badgeColor').value;
+    const badgeLabel = document.getElementById('badgeLabel').value;
 
-    return t.set('board', 'private', 'days', days)
-        .then(function () {
-            return t.set('board', 'private', 'badgeColor', badgeColor);
-        })
-        .then(function () {
-            return t.set('board', 'private', 'badgeLabel', badgeLabel);
-        })
-        .then(function () {
-            t.closePopup();
-        });
+    await t.set('board', 'private', 'days', days);
+    await t.set('board', 'private', 'badgeColor', badgeColor);
+    await t.set('board', 'private', 'badgeLabel', badgeLabel);
+
+    t.closePopup();
 });
