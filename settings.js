@@ -8,6 +8,7 @@ var t = window.TrelloPowerUp.iframe();
 
     // Get all lists on the board
     const board = await t.board('lists');
+    console.log("board", board);
     const listFilter = document.getElementById('listFilter');
 
     // Clear the loading option
