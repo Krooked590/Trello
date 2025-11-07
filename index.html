@@ -27,11 +27,16 @@
       //     }
       //   }]
       // },
-      'show-settings': function (t, options) {
+      'show-settings': async function (t, options) {
+        const lists = await t.lists('id', 'name');
+
         return t.popup({
-          title: 'Settings',
+          title: 'Badge Settings',
           url: './settings.html',
-          height: 300 // Adjust based on your form size
+          height: 300,
+          args: {
+            lists: lists  // Pass lists to the settings page
+          }
         });
       },
       'list-sorters': function (t) {
