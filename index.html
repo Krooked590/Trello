@@ -125,8 +125,12 @@
         const badgeLabel = await t.get('member', 'private', 'badgeLabel', 'New');
         const listFilter = await t.get('member', 'private', 'listFilter', '');
 
+        console.log("card.idList", card.idList);
+        console.log("listFilter", listFilter);
+
         if (listFilter && card.idList !== listFilter) {
           console.log("listFilter", listFilter);
+          
           return {};
         }
 

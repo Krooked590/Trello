@@ -6,6 +6,9 @@ var t = window.TrelloPowerUp.iframe();
     const days = await t.get('member', 'private', 'days', 4);
     const badgeColor = await t.get('member', 'private', 'badgeColor', 'pink');
     const badgeLabel = await t.get('member', 'private', 'badgeLabel', 'New');
+    // Load saved list filter setting (array of list IDs)
+    const savedListIds = await t.get('member', 'private', 'listFilter', []);
+    console.log("savedListIds", savedListIds)
 
     document.getElementById('days').value = days;
     document.getElementById('badgeColor').value = badgeColor;
@@ -35,9 +38,6 @@ var t = window.TrelloPowerUp.iframe();
         listFilter.appendChild(option);
     });
 
-    // Load saved list filter setting (array of list IDs)
-    const savedListIds = await t.get('member', 'private', 'listFilter', []);
-
     // Select the saved lists
     Array.from(listFilter.options).forEach(function (option) {
         if (savedListIds.includes(option.value)) {
@@ -54,6 +54,7 @@ document.getElementById('save').addEventListener('click', async function () {
 
     // Get all selected list IDs
     const listFilterSelect = document.getElementById('listFilter');
+    console.log("listFilterSelect.selectedOptions", listFilterSelect.selectedOptions);
     const selectedLists = Array.from(listFilterSelect.selectedOptions).map(option => option.value);
 
     await t.set('member', 'private', 'days', days);
